@@ -1,6 +1,7 @@
 package org.example;
 
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -26,9 +27,29 @@ public class Main {
 //        int[] A = {2, 3, 1, 5};
 //        System.out.println(solution33(A));
 
+//        int[] A = {1, 3, 1, 4, 2, 3, 5, 4};
+//        int X = 5;
+//        System.out.println(solution41(X, A));
+
         int[] A = {1, 3, 1, 4, 2, 3, 5, 4};
-        int X = 5;
-        System.out.println(solution41(X, A));
+        System.out.println(solutionDemo1(A));
+    }
+
+    public static int solutionDemo1(int[] A) {
+        java.util.Set<Integer> set = new java.util.HashSet<>();
+
+        for (int num : A) {
+            if (num > 0) {
+                set.add(num);
+            }
+        }
+
+        int positive = 1;
+        while (set.contains(positive)) {
+            positive++;
+        }
+
+        return positive;
     }
 
     public static int solution41(int X, int[] A) {
@@ -80,7 +101,7 @@ public class Main {
             int item = A[i];
 
             if (item - i > 1) {
-                return ++i;
+                return i + 1;
             }
         }
 
