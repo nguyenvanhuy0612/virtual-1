@@ -6,8 +6,29 @@ public class TapeEquilibrium {
     }
 
     public int solution(int[] A) {
+        int N = A.length;
 
+        // Calculate total sum of array A
+        int totalSum = 0;
+        for (int num : A) {
+            totalSum += num;
+        }
 
-        return -1;
+        // Initialize variables
+        int leftSum = 0;
+        int rightSum = totalSum;
+        int minDifference = Integer.MAX_VALUE;
+
+        // Iterate through the array to find the minimal difference
+        for (int i = 0; i < N - 1; i++) {
+            leftSum += A[i];
+            rightSum -= A[i];
+            int difference = Math.abs(leftSum - rightSum);
+            if (difference < minDifference) {
+                minDifference = difference;
+            }
+        }
+
+        return minDifference;
     }
 }
