@@ -12,6 +12,33 @@ public class PermMissingElem {
         System.out.println(sol.solution(A2));  // Output: 1 (when N = 0)
     }
 
+    public int solution_sort(int[] A) {
+        int N = A.length;
+
+        // Handle case when array A is empty
+        if (N == 0) {
+            return 1; // The missing element when N=0 is logically 1
+        }
+
+        // Sort the array
+        java.util.Arrays.sort(A);
+
+        // Check the first element
+        if (A[0] != 1) {
+            return 1; // If the smallest element is not 1, return 1 as missing
+        }
+
+        // Iterate through the sorted array to find the missing element
+        for (int i = 1; i < N; i++) {
+            if (A[i] != A[i - 1] + 1) {
+                return A[i - 1] + 1;
+            }
+        }
+
+        // If all elements are in order from 1 to N+1, then the missing element is N+1
+        return A[N - 1] + 1;
+    }
+
     public int solution(int[] A) {
         int N = A.length;
 
