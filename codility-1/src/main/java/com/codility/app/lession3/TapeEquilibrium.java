@@ -2,7 +2,11 @@ package com.codility.app.lession3;
 
 public class TapeEquilibrium {
     public static void main(String[] args) {
+        TapeEquilibrium sol = new TapeEquilibrium();
 
+        // Test case
+        int[] A = {3, 1, 2, 4, 3};
+        System.out.println(sol.solution(A));  // Output: 1
     }
 
     public int solution(int[] A) {
