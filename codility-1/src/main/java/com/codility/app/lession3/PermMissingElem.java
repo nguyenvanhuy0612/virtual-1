@@ -66,14 +66,6 @@ public class PermMissingElem {
         throw new IllegalArgumentException("No missing element found");
     }
 
-    public int solution_h(int[] A) {
-        if (A.length == 0) {
-            return 1;
-        }
-
-        return -1;
-    }
-
     public int solution1(int[] A) {
         int N = A.length;
 
