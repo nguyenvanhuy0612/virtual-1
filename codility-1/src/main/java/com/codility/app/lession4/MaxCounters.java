@@ -1,6 +1,7 @@
 package com.codility.app.lession4;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class MaxCounters {
@@ -46,23 +47,20 @@ public class MaxCounters {
     }
 
     public int[] solution_h(int N, int[] A) {
-        ArrayList<Integer> counters = new ArrayList<>(N);
-        for (int i = 0; i < N; i++) {
-            counters.add(0);
-        }
-
-        int Np = N + 1;
+        int[] counters = new int[N];
+        //Arrays.fill(counters, 0);
 
         for (int a : A) {
             if (a >= 1 && a <= N) {
                 int i = a - 1;
-                int iv = counters.get(i);
-                counters.set(i, iv + 1);
-            } else if (a == Np) {
-                counters = new ArrayList<>(Collections.nCopies(N, Collections.max(counters)));
+                counters[i]++;
+            } else if (a == N + 1) {
+                Arrays.parallelSort(counters);
+                int max = counters[N-1];
+                Arrays.fill(counters, max);
             }
         }
 
-        return counters.stream().mapToInt(Integer::intValue).toArray();
+        return counters;
     }
 }
