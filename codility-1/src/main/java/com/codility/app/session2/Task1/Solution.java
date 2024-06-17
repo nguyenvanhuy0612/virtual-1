@@ -11,6 +11,9 @@ Examples:
 2. Given N = 19, the function should return 199 (the sum of digits is 1 + 9 + 9 = 19).
 
 3. Given N = 7, the function should return 7.
+N = 23,
+N > 9 ? 599
+N = N - 9 -> 14 5
 
 Assume that:
 

@@ -11,6 +11,7 @@ public class Task3_2 {
         System.out.println(sol.solution(new String[]{"...", ">.A"})); // false
         System.out.println(sol.solution(new String[]{"A.v"})); // false
     }
+
     public boolean solution(String[] B) {
         int N = B.length;
         int M = B[0].length();
@@ -38,14 +39,26 @@ public class Task3_2 {
                 char cell = board[i][j];
                 if (cell == '<' || cell == '>' || cell == '^' || cell == 'v') {
                     int dx = 0, dy = 0;
-                    if (cell == '<') dy = -1;
-                    else if (cell == '>') dy = 1;
-                    else if (cell == '^') dx = -1;
-                    else if (cell == 'v') dx = 1;
+                    if (cell == '<') {
+                        dx = 0;
+                        dy = -1;
+                    } else if (cell == '>') {
+                        dx = 0;
+                        dy = 1;
+                    } else if (cell == '^') {
+                        dx = -1;
+                        dy = 0;
+                    } else if (cell == 'v') {
+                        dx = 1;
+                        dy = 0;
+                    }
 
                     int x = i + dx, y = j + dy;
                     while (x >= 0 && x < N && y >= 0 && y < M && board[x][y] != 'X' && board[x][y] != '<' && board[x][y] != '>' && board[x][y] != '^' && board[x][y] != 'v') {
-                        if (board[x][y] == '.' || board[x][y] == 'A') {
+                        if (board[x][y] == 'A') {
+                            return false; // observed to A
+                        }
+                        if (board[x][y] == '.') {
                             board[x][y] = 'O';  // Mark as observed
                         }
                         x += dx;

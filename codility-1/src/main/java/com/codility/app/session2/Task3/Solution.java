@@ -67,8 +67,7 @@ public class Solution {
                 }
             }
         }
-        //  right{0,1}, down{1,0}, left{0,-1}, up{-1,0}
-        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+
         // all observed, fill 'O'
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
@@ -105,8 +104,10 @@ public class Solution {
                             && board[x][y] != '^'
                             && board[x][y] != 'v'
                     ) {
-
-                        if (board[x][y] == '.' || board[x][y] == 'A') {
+                        if (board[x][y] == 'A') {
+                            return false;
+                        }
+                        if (board[x][y] == '.') {
                             board[x][y] = 'O'; // fill to 'O' as cannot run to this cell
                         }
                         // update x,y
@@ -118,9 +119,9 @@ public class Solution {
         }
 
         // check 'A' is 'O' ?
-        if (board[startX][startY] != 'O') {
-            return false;
-        }
+//        if (board[startX][startY] == 'O') {
+//            return false;
+//        }
 
         // find path from (startX, startY) to (N-1, M-1)
         java.util.Queue<int[]> queue = new java.util.LinkedList<>();
@@ -128,6 +129,9 @@ public class Solution {
 
         boolean[][] visit = new boolean[N][M];
         visit[startX][startY] = true;
+
+        //  right{0,1}, down{1,0}, left{0,-1}, up{-1,0}
+        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
         while (!queue.isEmpty()) {
             int[] position = queue.poll();
             int x = position[0];
