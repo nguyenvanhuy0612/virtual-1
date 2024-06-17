@@ -60,10 +60,14 @@ public class Solution {
 
         for (int i = 0; i < N; i++) {
             board[i] = B[i].toCharArray();
-            for (int j = 0; j < M; j++) {
-                if (board[i][j] == 'A') {
-                    startX = i;
-                    startY = j;
+
+            // Find Assassin
+            if (startX == -1) {
+                for (int j = 0; j < M; j++) {
+                    if (board[i][j] == 'A') {
+                        startX = i;
+                        startY = j;
+                    }
                 }
             }
         }
